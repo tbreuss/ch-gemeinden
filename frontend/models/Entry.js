@@ -10,11 +10,16 @@ let Entry = {
             Entry.list = result
         })
     },
-    search(plz) {
+    search(plz4, ktkz, gdenr, gdenamk) {
         return m.request({
             method: "GET",
-            url: WEB_URL + "plz/" + plz,
-            data: { },
+            url: WEB_URL + "plz",
+            data: {
+                plz4: plz4,
+                ktkz: ktkz,
+                gdenr: gdenr,
+                gdenamk: gdenamk
+            },
             headers: { }
         }).then((result) => {
             Entry.list = result

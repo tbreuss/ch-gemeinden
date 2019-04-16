@@ -14,7 +14,6 @@ const PAGE_TITLE = t("Adminpanel");
 
 m.route(document.body, "/", {
     "/": {
-        onmatch: onMatchHandler,
         render() {
             document.title = t("Index") + " / " + PAGE_TITLE;
             setActiveMenuItem('.site-navigation__index a');
@@ -32,10 +31,6 @@ m.route(document.body, "/", {
 
 function __(key) {
     return key;
-}
-
-function onMatchHandler() {
-    if (!localStorage.getItem("auth-token")) m.route.set("/login")
 }
 
 function setActiveMenuItem(selector = '') {

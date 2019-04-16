@@ -3,24 +3,36 @@
 namespace app\controllers;
 
 use Yii;
+use yii\db\Query;
 use yii\rest\Controller;
 
 class PlzController extends Controller
 {
 
-    public function actionIndex(int $plz)
+    public function actionIndex(string $plz4 = '', string $ktkz = '', string $gdenr = '', string $gdenamk = '')
     {
-        $sql = "
-            SELECT * 
-            FROM plz_gemeinde
-            WHERE plz4 LIKE :plz
-            ORDER BY in_gde DESC, gdenr ASC;
-        ";
-        $params = ['plz' => $plz . '%'];
+        $query = (new Query())
+            ->select('*')
+            ->from('plz_gemeinde')
+            ->orderBy('plz4 ASC, in_gde DESC');
 
-        $rows = Yii::$app->db->createCommand($sql)
-            ->bindValues($params)
-            ->queryAll();
+        if (!empty($plz4)) {
+            $query->andWhere(['like', 'plz4', $plz4]);
+        }
+
+        if (!empty($ktkz)) {
+            $query->andWhere('ktkz=:ktkz', ['ktkz' => $ktkz]);
+        }
+
+        if (!empty($gdenr)) {
+            $query->andWhere(['like', 'gdenr', $gdenr]);
+        }
+
+        if (!empty($gdenamk)) {
+            $query->andWhere(['like', 'gdenamk', $gdenamk]);
+        }
+
+        $rows = $query->all();
 
         return $rows;
     }

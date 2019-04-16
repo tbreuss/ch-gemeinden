@@ -1,42 +1,30 @@
 import m from "mithril";
 import t from "../components/Translate"
+import EntryForm from "../components/EntryForm";
+import EntryList from "../components/EntryList";
 import Entry from "../models/Entry";
 import ErrorHandler from "../components/ErrorHandler";
 
 export default {
+    plz: "",
+    kanton: "",
+    gemeinde: "",
+    gemeindename: "",
     oninit() {
+        this.plz = "";
+        this.kanton = "";
+        this.gemeinde = "";
+        this.gemeindename = "";
     },
     view() {
         return [
-            m("h1", t("PLZ")),
-            m("div.pure-form", [
-                m("input.pure-input[data-target=test.name]", {
-                    oninput: (e) => {
-                        this.name = e.target.value
-                        e.redraw = false
-                    },
-                    onkeypress: (e) => {
-                        this.error = ""
-                        e.redraw = false
-                    },
-                    onkeyup: (e) => {
-                        if (e.keyCode == 13) {
-                            this.name = e.target.value
-                            this.search()
-                        }
-                        e.redraw = false
-                    },
-                    value: this.name,
-                }),
-                m("button.pure-button", {
-                    onclick: (e) => {
-                        this.search()
-                    }
-                }, t("Search")),
-            ]),
+            m(EntryForm, {
+                searchHandler: this.search,
+                resetHandler: this.reset
+            }),
             this.renderError(),
             m("br"),
-            this.renderTable()
+            m(EntryList, { entries: Entry.list })
         ];
     },
     renderError() {
@@ -45,38 +33,13 @@ export default {
         }
         return m("span.error", this.error)
     },
-    renderTable() {
-        if (Entry.list.length === 0) {
-            return [];
-        }
-        return m("table#test-table.pure-table.pure-table-horizontal", [
-            m("thead", [
-                m("tr", [
-                    m("th", t("PLZ")),
-                    m("th", t("% in Gemeinde")),
-                    m("th", t("Kanton")),
-                    m("th", t("Nummer")),
-                    m("th", t("Name")),
-                ])
-            ]),
-            m("tbody#test-tbody", Entry.list.map((test, index) => {
-                return m("tr", [
-                    m("td", test.plz4),
-                    m("td", test.in_gde),
-                    m("td", test.ktkz),
-                    m("td", test.gdenr),
-                    m("td", test.gdenamk),
-                ])
-            }))
-        ])
-    },
     search() {
-        if (this.name == "") {
+        if ((this.plz === "") && (this.kanton === "") && (this.gemeinde === "") && (this.gemeindename === "")) {
             return;
         }
-        Entry.search(this.name)
+        Entry.search(this.plz, this.kanton, this.gemeinde, this.gemeindename)
             .then(() => {
-                this.name = "";
+                //this.plz = "";
             })
             .catch((error) => {
                 ErrorHandler.show(error)
@@ -85,4 +48,11 @@ export default {
             this.error = error.response.errors.name[0]
         });*/
     },
+    reset() {
+        Entry.list = [];
+        this.plz = '';
+        this.kanton = '';
+        this.gemeinde = '';
+        this.gemeindename = '';
+    }
 }
