@@ -32,7 +32,7 @@ let SearchForm = {
                             onfocusout: (e) => {
                                 this.plz = e.target.value
                                 this.search()
-                                e.redraw = false
+                                //e.redraw = false
                             },
                             oninput: (e) => {
                                 if (e.target.value.match(/^[0-9]+$/)) {
@@ -50,8 +50,9 @@ let SearchForm = {
                                 if (e.keyCode == 13) {
                                     this.plz = e.target.value
                                     this.search()
+                                } else {
+                                    e.redraw = false
                                 }
-                                e.redraw = false
                             },
                             type: "text",
                             value: this.plz,
@@ -69,7 +70,7 @@ let SearchForm = {
                             onchange: (e) => {
                                 this.kanton = e.target.value
                                 this.search()
-                                e.redraw = false
+                                //e.redraw = false
                             },
                             value: this.kanton
                         }, [
@@ -84,7 +85,7 @@ let SearchForm = {
                             onfocusout: (e) => {
                                 this.gemeinde = e.target.value
                                 this.search()
-                                e.redraw = false
+                                //e.redraw = false
                             },
                             oninput: (e) => {
                                 if (e.target.value.match(/^[0-9]+$/)) {
@@ -102,8 +103,9 @@ let SearchForm = {
                                 if (e.keyCode == 13) {
                                     this.gemeinde = e.target.value
                                     this.search()
+                                } else {
+                                    e.redraw = false
                                 }
-                                e.redraw = false
                             },
                             value: this.gemeinde,
                             maxlength: 4
@@ -115,7 +117,7 @@ let SearchForm = {
                             onfocusout: (e) => {
                                 this.gemeindename = e.target.value
                                 this.search()
-                                e.redraw = false
+                                //e.redraw = false
                             },
                             oninput: (e) => {
                                 this.gemeindename = e.target.value
@@ -129,8 +131,9 @@ let SearchForm = {
                                 if (e.keyCode == 13) {
                                     this.gemeindename = e.target.value
                                     this.search()
+                                } else {
+                                    e.redraw = false
                                 }
-                                e.redraw = false
                             },
                             value: this.gemeindename
                         }),

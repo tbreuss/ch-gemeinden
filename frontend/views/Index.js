@@ -30,6 +30,6 @@ export default {
         Entry.search(plz, kanton, gemeinde, gemeindename)
     },
     reset() {
-        Entry.list = [];
+        Entry.reset()
     }
 }

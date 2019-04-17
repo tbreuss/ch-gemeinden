@@ -2,6 +2,9 @@ import m from "mithril";
 
 let Entry = {
     list: [],
+    reset() {
+        Entry.list = []
+    },
     search(plz4, ktkz, gdenr, gdenamk) {
         return m.request({
             method: "GET",
