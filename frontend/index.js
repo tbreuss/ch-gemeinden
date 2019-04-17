@@ -10,41 +10,17 @@ import Error from "./views/Error";
 // components
 import t from "./components/Translate";
 
-const PAGE_TITLE = t("Adminpanel");
-
 m.route(document.body, "/", {
     "/": {
         render() {
-            document.title = t("Index") + " / " + PAGE_TITLE;
-            setActiveMenuItem('.site-navigation__index a');
+            document.title = t("Gemeindeverzeichnis Schweiz");
             return m(DefaultLayout, m(Index))
         }
     },
     "/:404...": {
         render() {
-            document.title = t("Error") + " / " + PAGE_TITLE;
-            setActiveMenuItem();
+            document.title = t("Fehler");
             return m(DefaultLayout, m(Error))
         }
     }
 });
-
-function __(key) {
-    return key;
-}
-
-function setActiveMenuItem(selector = '') {
-    let els = document.querySelectorAll('.site-navigation a');
-    els.forEach((el) => {
-        el.classList.remove('active');
-    });
-
-    if (selector === '') {
-        return;
-    }
-
-    let el = document.querySelector(selector);
-    if (el) {
-        el.classList.add('active');
-    }
-}

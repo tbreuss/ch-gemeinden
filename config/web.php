@@ -11,7 +11,7 @@ $config = [
     'defaultRoute' => 'site/index',
     'components' => [
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            // !!! insert a secret key in the following (if it is isEmpty) - this is required by cookie validation
             'cookieValidationKey' => 'jadz6AswCcYcfNlIUxVndOu-pboPzZqz',
         ],
         'user' => [

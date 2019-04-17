@@ -1,24 +1,13 @@
 import m from "mithril";
-import t from "../components/Translate"
-import EntryForm from "../components/EntryForm";
+import SearchForm from "../components/SearchForm";
 import EntryList from "../components/EntryList";
 import Entry from "../models/Entry";
-import ErrorHandler from "../components/ErrorHandler";
 
 export default {
-    plz: "",
-    kanton: "",
-    gemeinde: "",
-    gemeindename: "",
-    oninit() {
-        this.plz = "";
-        this.kanton = "";
-        this.gemeinde = "";
-        this.gemeindename = "";
-    },
     view() {
         return [
-            m(EntryForm, {
+            m("h2", "Gemeindeverzeichnis"),
+            m(SearchForm, {
                 searchHandler: this.search,
                 resetHandler: this.reset
             }),
@@ -33,26 +22,14 @@ export default {
         }
         return m("span.error", this.error)
     },
-    search() {
-        if ((this.plz === "") && (this.kanton === "") && (this.gemeinde === "") && (this.gemeindename === "")) {
-            return;
+    search(plz, kanton, gemeinde, gemeindename) {
+        if ((plz === "") && (kanton === "") && (gemeinde === "") && (gemeindename === "")) {
+            this.reset()
+            return
         }
-        Entry.search(this.plz, this.kanton, this.gemeinde, this.gemeindename)
-            .then(() => {
-                //this.plz = "";
-            })
-            .catch((error) => {
-                ErrorHandler.show(error)
-            });
-        /*.catch((error) => {
-            this.error = error.response.errors.name[0]
-        });*/
+        Entry.search(plz, kanton, gemeinde, gemeindename)
     },
     reset() {
         Entry.list = [];
-        this.plz = '';
-        this.kanton = '';
-        this.gemeinde = '';
-        this.gemeindename = '';
     }
 }

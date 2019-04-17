@@ -2,11 +2,10 @@
 
 namespace app\controllers;
 
-use Yii;
 use yii\db\Query;
 use yii\rest\Controller;
 
-class PlzController extends Controller
+class SearchController extends Controller
 {
 
     public function actionIndex(string $plz4 = '', string $ktkz = '', string $gdenr = '', string $gdenamk = '')

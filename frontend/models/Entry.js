@@ -2,18 +2,10 @@ import m from "mithril";
 
 let Entry = {
     list: [],
-    loadList() {
-        return m.request({
-            method: "GET",
-            url: WEB_URL + "/adminpanel/test"
-        }).then((result) => {
-            Entry.list = result
-        })
-    },
     search(plz4, ktkz, gdenr, gdenamk) {
         return m.request({
             method: "GET",
-            url: WEB_URL + "plz",
+            url: WEB_URL + "search",
             data: {
                 plz4: plz4,
                 ktkz: ktkz,
