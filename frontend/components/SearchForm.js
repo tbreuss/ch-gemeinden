@@ -1,17 +1,18 @@
 import m from "mithril";
-import t from "./Translate";
+import { t } from "./Translate";
 
-let kantone = [
-    '', 'AG', 'AR', 'AI', 'BL', 'BS', 'BE', 'FR', 'GE',
-    'GL', 'GR', 'JU', 'LU', 'NE', 'NW', 'OW', 'SH', 'SZ',
-    'SO', 'SG', 'TI', 'TG', 'UR', 'VD', 'VS', 'ZG', 'ZH'
+const kantone = [
+    "", "AG", "AR", "AI", "BL", "BS", "BE", "FR", "GE",
+    "GL", "GR", "JU", "LU", "NE", "NW", "OW", "SH", "SZ",
+    "SO", "SG", "TI", "TG", "UR", "VD", "VS", "ZG", "ZH"
 ];
 
-let SearchForm = {
+const SearchForm = {
     plz: "",
     kanton: "",
     gemeinde: "",
     gemeindename: "",
+    checkboxvalue: false,
     resetHandler: null,
     searchHandler: null,
     oninit(vnode) {
@@ -19,12 +20,13 @@ let SearchForm = {
         this.kanton = ""
         this.gemeinde = ""
         this.gemeindename = ""
+        this.checkboxvalue = false
         this.resetHandler = vnode.attrs.resetHandler
         this.searchHandler = vnode.attrs.searchHandler
     },
     view(vnode) {
         return [
-            m("form.pure-form pure-form-aligned", [
+            m("form.pure-form.pure-form-aligned", [
                 m("fieldset", [
                     m(".pure-control-group", [
                         m("label[for=plz]", "Postleitzahl"),
@@ -32,26 +34,14 @@ let SearchForm = {
                             onfocusout: (e) => {
                                 this.plz = e.target.value
                                 this.search()
-                                //e.redraw = false
                             },
                             oninput: (e) => {
-                                if (e.target.value.match(/^[0-9]+$/)) {
-                                    this.plz = e.target.value
-                                } else {
-                                    e.target.value = e.target.value.replace(/[^0-9]/, "")
-                                }
-                                e.redraw = false
-                            },
-                            onkeypress: (e) => {
-                                this.error = ""
-                                e.redraw = false
+                                this.plz = e.target.value = e.target.value.replace(/[^0-9]/, "")
                             },
                             onkeyup: (e) => {
-                                if (e.keyCode == 13) {
+                                if (e.keyCode === 13) {
                                     this.plz = e.target.value
                                     this.search()
-                                } else {
-                                    e.redraw = false
                                 }
                             },
                             type: "text",
@@ -65,12 +55,10 @@ let SearchForm = {
                         m("select", {
                             oninput: (e) => {
                                 this.kanton = e.target.value
-                                e.redraw = false
                             },
                             onchange: (e) => {
                                 this.kanton = e.target.value
                                 this.search()
-                                //e.redraw = false
                             },
                             value: this.kanton
                         }, [
@@ -85,26 +73,14 @@ let SearchForm = {
                             onfocusout: (e) => {
                                 this.gemeinde = e.target.value
                                 this.search()
-                                //e.redraw = false
                             },
                             oninput: (e) => {
-                                if (e.target.value.match(/^[0-9]+$/)) {
-                                    this.gemeinde = e.target.value
-                                } else {
-                                    e.target.value = e.target.value.replace(/[^0-9]/, "")
-                                }
-                                e.redraw = false
-                            },
-                            onkeypress: (e) => {
-                                this.error = ""
-                                e.redraw = false
+                                this.gemeinde = e.target.value = e.target.value.replace(/[^0-9]/, "")
                             },
                             onkeyup: (e) => {
-                                if (e.keyCode == 13) {
+                                if (e.keyCode === 13) {
                                     this.gemeinde = e.target.value
                                     this.search()
-                                } else {
-                                    e.redraw = false
                                 }
                             },
                             value: this.gemeinde,
@@ -117,26 +93,30 @@ let SearchForm = {
                             onfocusout: (e) => {
                                 this.gemeindename = e.target.value
                                 this.search()
-                                //e.redraw = false
                             },
                             oninput: (e) => {
                                 this.gemeindename = e.target.value
-                                e.redraw = false
-                            },
-                            onkeypress: (e) => {
-                                this.error = ""
-                                e.redraw = false
                             },
                             onkeyup: (e) => {
-                                if (e.keyCode == 13) {
+                                if (e.keyCode === 13) {
                                     this.gemeindename = e.target.value
                                     this.search()
-                                } else {
-                                    e.redraw = false
                                 }
                             },
                             value: this.gemeindename
                         }),
+                    ]),
+                    m(".pure-controls", [
+                        m("label.pure-checkbox",
+                            m("input[type=checkbox]", {
+                                checked: this.checkboxvalue ? "checked" : "",
+                                onclick: (e) => {
+                                    this.checkboxvalue = e.target.checked
+                                    this.search()
+                                },
+                            }),
+                            t("nur 100% Übereinstimmung")
+                        )
                     ]),
                     m(".pure-controls", [
                         m("button.pure-button", {
@@ -159,6 +139,7 @@ let SearchForm = {
         this.kanton = ""
         this.gemeinde = ""
         this.gemeindename = ""
+        this.checkboxvalue = false
         this.resetHandler.call()
     },
     search() {
@@ -167,7 +148,8 @@ let SearchForm = {
             this.plz,
             this.kanton,
             this.gemeinde,
-            this.gemeindename
+            this.gemeindename,
+            this.checkboxvalue
         )
     },
     isEmpty() {
@@ -178,4 +160,4 @@ let SearchForm = {
     }
 }
 
-export default SearchForm;
+export { SearchForm };

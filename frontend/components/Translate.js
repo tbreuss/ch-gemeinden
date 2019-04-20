@@ -1,5 +1,5 @@
-const t = function(key) {
+const t = function (key) {
     return key;
 };
 
-export default t;
+export { t };
