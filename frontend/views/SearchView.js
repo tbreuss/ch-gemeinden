@@ -1,11 +1,11 @@
 import m from "mithril";
 import { SearchForm } from "../components/SearchForm";
-import { EntryList } from "../components/EntryList";
+import { SearchList } from "../components/SearchList";
 import { EntryModel } from "../models/EntryModel";
 
 let searching = false;
 
-const IndexView = {
+const SearchView = {
     view() {
         return [
             m("h2", "Gemeindeverzeichnis der Schweiz"),
@@ -15,7 +15,7 @@ const IndexView = {
             }),
             this.renderError(),
             m("br"),
-            m(EntryList, {entries: EntryModel.list, searching: searching})
+            m(SearchList, {entries: EntryModel.list, searching: searching})
         ]
     },
     renderError() {
@@ -40,4 +40,4 @@ const IndexView = {
     }
 };
 
-export { IndexView }
+export { SearchView }

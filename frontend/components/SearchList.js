@@ -2,7 +2,7 @@ import m from "mithril";
 import { t } from "./Translate";
 import { EntryModel } from "../models/EntryModel";
 
-const EntryList = {
+const SearchList = {
     view(vnode) {
         if (vnode.attrs.entries.length === 0) {
             if (vnode.attrs.searching) {
@@ -37,4 +37,4 @@ const EntryList = {
     }
 };
 
-export { EntryList };
+export { SearchList };

@@ -4,7 +4,7 @@ import m from "mithril";
 import { DefaultLayout } from "./layouts/DefaultLayout";
 
 // views
-import { IndexView } from "./views/IndexView";
+import { SearchView } from "./views/SearchView";
 import { ErrorView } from "./views/ErrorView";
 
 // components
@@ -14,7 +14,7 @@ m.route(document.body, "/", {
     "/": {
         render() {
             document.title = t("Gemeindeverzeichnis der Schweiz");
-            return m(DefaultLayout, m(IndexView));
+            return m(DefaultLayout, m(SearchView));
         }
     },
     "/:404...": {
