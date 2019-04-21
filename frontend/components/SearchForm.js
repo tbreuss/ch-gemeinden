@@ -1,5 +1,5 @@
 import m from "mithril";
-import { t } from "./Translate";
+import {t} from "./Translate";
 
 const kantone = [
     "", "AG", "AR", "AI", "BL", "BS", "BE", "FR", "GE",
@@ -160,4 +160,4 @@ const SearchForm = {
     }
 }
 
-export { SearchForm };
+export {SearchForm};

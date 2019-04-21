@@ -14,4 +14,4 @@ const DefaultLayout = {
     }
 };
 
-export { DefaultLayout }
+export {DefaultLayout}

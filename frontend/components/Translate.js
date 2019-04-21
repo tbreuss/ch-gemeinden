@@ -2,4 +2,4 @@ const t = function (key) {
     return key;
 };
 
-export { t };
+export {t};

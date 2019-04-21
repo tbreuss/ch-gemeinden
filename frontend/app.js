@@ -1,14 +1,11 @@
 import m from "mithril";
-
 // layout
-import { DefaultLayout } from "./layouts/DefaultLayout";
-
+import {DefaultLayout} from "./layouts/DefaultLayout";
 // views
-import { SearchView } from "./views/SearchView";
-import { ErrorView } from "./views/ErrorView";
-
+import {SearchView} from "./views/SearchView";
+import {ErrorView} from "./views/ErrorView";
 // components
-import { t } from "./components/Translate";
+import {t} from "./components/Translate";
 
 m.route(document.body, "/", {
     "/": {

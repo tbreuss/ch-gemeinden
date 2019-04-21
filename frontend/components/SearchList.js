@@ -1,6 +1,6 @@
 import m from "mithril";
-import { t } from "./Translate";
-import { EntryModel } from "../models/EntryModel";
+import {t} from "./Translate";
+import {SearchModel} from "../models/SearchModel";
 
 const SearchList = {
     view(vnode) {
@@ -13,11 +13,11 @@ const SearchList = {
         return m("table.pure-table.pure-table-horizontal.pure-table--entries", [
             m("thead", [
                 m("tr", [
-                    m("th[data-sort=plz4]", { onclick: this.sort }, t("Postleitzahl")),
-                    m("th[data-sort=in_gde]", { onclick: this.sort }, t("Anteil in Gemeinde")),
-                    m("th[data-sort=ktkz]", { onclick: this.sort }, t("Kanton")),
-                    m("th[data-sort=gdenr]", { onclick: this.sort }, t("Gemeindenummer")),
-                    m("th[data-sort=gdenamk]", { onclick: this.sort }, t("Gemeindename"))
+                    m("th[data-sort=plz4]", {onclick: this.sort}, t("Postleitzahl")),
+                    m("th[data-sort=in_gde]", {onclick: this.sort}, t("Anteil in Gemeinde")),
+                    m("th[data-sort=ktkz]", {onclick: this.sort}, t("Kanton")),
+                    m("th[data-sort=gdenr]", {onclick: this.sort}, t("Gemeindenummer")),
+                    m("th[data-sort=gdenamk]", {onclick: this.sort}, t("Gemeindename"))
                 ])
             ]),
             m("tbody", vnode.attrs.entries.map((entry) => {
@@ -33,8 +33,8 @@ const SearchList = {
     },
     sort(e) {
         let searchField = e.target.dataset.sort;
-        EntryModel.sort(searchField);
+        SearchModel.sort(searchField);
     }
 };
 
-export { SearchList };
+export {SearchList};

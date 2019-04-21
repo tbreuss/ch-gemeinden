@@ -1,5 +1,5 @@
 import m from "mithril";
-import { t } from "../components/Translate";
+import {t} from "../components/Translate";
 
 const ErrorView = {
     view() {
@@ -7,4 +7,4 @@ const ErrorView = {
     }
 };
 
-export { ErrorView }
+export {ErrorView}

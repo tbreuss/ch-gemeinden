@@ -2,10 +2,10 @@ import m from "mithril";
 
 let data = {};
 
-const EntryModel = {
+const SearchModel = {
     list: [],
     reset() {
-        EntryModel.list = [];
+        SearchModel.list = [];
     },
     search(plz4, ktkz, gdenr, gdenamk, only100, sort) {
         let params = {
@@ -22,7 +22,7 @@ const EntryModel = {
             data: params
         }).then((result) => {
             data = params;
-            EntryModel.list = result
+            SearchModel.list = result
         });
     },
     sort(field) {
@@ -33,10 +33,10 @@ const EntryModel = {
             url: WEB_URL + "search",
             data: params
         }).then((result) => {
-            EntryModel.list = result
+            SearchModel.list = result
             data.sort = field;
         });
     }
 };
 
-export { EntryModel };
+export {SearchModel};
