@@ -35,4 +35,4 @@ tests/_support/_generated
 /config/db.php
 
 /node_modules/
-/web/bin/app-dev.js
+/web/static/app-dev.js
