@@ -1,41 +1,41 @@
 import m from "mithril";
 
-let data = {};
+const defaults = {
+    plz4: "",
+    ktkz: "",
+    gdenr: "",
+    gdenamk: "",
+    only100: 0,
+    sort: "plz4"
+};
+let list = [];
+let wasSearched = false;
 
 const SearchModel = {
-    list: [],
+    params: Object.assign({}, defaults),
     reset() {
-        SearchModel.list = [];
+        list = [];
+        SearchModel.params = Object.assign({}, defaults);
+        wasSearched = false;
     },
-    search(plz4, ktkz, gdenr, gdenamk, only100, sort) {
-        let params = {
-            plz4: plz4,
-            ktkz: ktkz,
-            gdenr: gdenr,
-            gdenamk: gdenamk,
-            only100: only100 ? 1 : 0,
-            sort: sort
-        };
+    search() {
         return m.request({
             method: "GET",
             url: WEB_URL + "search",
-            data: params
+            data: SearchModel.params
         }).then((result) => {
-            data = params;
-            SearchModel.list = result
+            list = result;
+            wasSearched = true;
         });
     },
-    sort(field) {
-        let params = data;
-        params.sort = field;
-        return m.request({
-            method: "GET",
-            url: WEB_URL + "search",
-            data: params
-        }).then((result) => {
-            SearchModel.list = result
-            data.sort = field;
-        });
+    getList() {
+        return list;
+    },
+    getCount() {
+        return list.length;
+    },
+    wasSearched() {
+        return wasSearched;
     }
 };
 

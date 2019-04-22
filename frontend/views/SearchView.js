@@ -5,7 +5,18 @@ import {SearchTotal} from "../components/SearchTotal";
 import {SearchModel} from "../models/SearchModel";
 import {t} from "../components/Translate";
 
-let searching = false;
+function sort(sortField) {
+    SearchModel.params.sort = sortField;
+    search();
+}
+
+function search() {
+    SearchModel.search();
+}
+
+function reset() {
+    SearchModel.reset();
+}
 
 const SearchView = {
     view() {
@@ -13,27 +24,14 @@ const SearchView = {
         return [
             m("h2", "Gemeindeverzeichnis der Schweiz"),
             m(SearchForm, {
-                searchHandler: SearchView.search,
-                resetHandler: SearchView.reset,
-                searching: searching
+                searchParams: SearchModel.params,
+                wasSearched: SearchModel.wasSearched(),
+                search: search,
+                reset: reset
             }),
-            m(SearchTotal, {count: SearchModel.list.length, searching: searching}),
-            m(SearchList, {entries: SearchModel.list, searching: searching})
+            m(SearchTotal, {count: SearchModel.getCount(), wasSearched: SearchModel.wasSearched()}),
+            m(SearchList, {entries: SearchModel.getList(), sort: sort})
         ]
-    },
-    search(plz, kanton, gemeinde, gemeindename, only100) {
-        if ((plz === "") && (kanton === "") && (gemeinde === "") && (gemeindename === "")) {
-            SearchView.reset();
-            return;
-        }
-        SearchModel.search(plz, kanton, gemeinde, gemeindename, only100)
-            .then(() => {
-                searching = true;
-            })
-    },
-    reset() {
-        SearchModel.reset();
-        searching = false;
     }
 };
 

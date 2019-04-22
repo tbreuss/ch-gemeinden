@@ -8,24 +8,8 @@ const kantone = [
 ];
 
 const SearchForm = {
-    plz: "",
-    kanton: "",
-    gemeinde: "",
-    gemeindename: "",
-    checkboxvalue: false,
-    resetHandler: null,
-    searchHandler: null,
-    oninit(vnode) {
-        SearchForm.plz = ""
-        SearchForm.kanton = ""
-        SearchForm.gemeinde = ""
-        SearchForm.gemeindename = ""
-        SearchForm.checkboxvalue = false
-        SearchForm.resetHandler = vnode.attrs.resetHandler
-        SearchForm.searchHandler = vnode.attrs.searchHandler
-    },
     view(vnode) {
-        let {searching} = vnode.attrs;
+        let {searchParams, search, reset, wasSearched} = vnode.attrs;
         return [
             m("form.pure-form.pure-form-aligned", [
                 m("fieldset", [
@@ -33,20 +17,20 @@ const SearchForm = {
                         m("label[for=plz]", "Postleitzahl"),
                         m("input#plz", {
                             onfocusout: (e) => {
-                                SearchForm.plz = e.target.value
-                                //SearchForm.search()
+                                searchParams.plz4 = e.target.value;
                             },
                             oninput: (e) => {
-                                SearchForm.plz = e.target.value = e.target.value.replace(/[^0-9]/, "")
+                                e.target.value = e.target.value.replace(/[^0-9]/, "");
+                                searchParams.plz4 = e.target.value;
                             },
                             onkeyup: (e) => {
                                 if (e.keyCode === 13) {
-                                    SearchForm.plz = e.target.value
-                                    SearchForm.search()
+                                    searchParams.plz4 = e.target.value;
+                                    search();
                                 }
                             },
                             type: "text",
-                            value: SearchForm.plz,
+                            value: searchParams.plz4,
                             maxlength: 4,
                             autofocus: "autofocus"
                         })
@@ -55,22 +39,20 @@ const SearchForm = {
                         m("label", "Kanton"),
                         m("select", {
                             oninput: (e) => {
-                                SearchForm.kanton = e.target.value
+                                searchParams.ktkz = e.target.value;
                             },
                             onchange: (e) => {
-                                SearchForm.kanton = e.target.value
-                                //SearchForm.search()
+                                searchParams.ktkz = e.target.value;
                             },
                             onkeyup: (e) => {
                                 if (e.keyCode === 13) {
-                                    //SearchForm.kanton = e.target.value
-                                    SearchForm.search()
+                                    search();
                                 }
                             },
-                            value: SearchForm.kanton
+                            value: searchParams.ktkz
                         }, [
                             kantone.map((kanton) => {
-                                return m('option', kanton)
+                                return m('option', kanton);
                             })
                         ]),
                     ]),
@@ -78,19 +60,19 @@ const SearchForm = {
                         m("label", "Gemeindenummer"),
                         m("input", {
                             onfocusout: (e) => {
-                                SearchForm.gemeinde = e.target.value
-                                //SearchForm.search()
+                                searchParams.gdenr = e.target.value;
                             },
                             oninput: (e) => {
-                                SearchForm.gemeinde = e.target.value = e.target.value.replace(/[^0-9]/, "")
+                                e.target.value = e.target.value.replace(/[^0-9]/, "");
+                                searchParams.gdenr = e.target.value;
                             },
                             onkeyup: (e) => {
                                 if (e.keyCode === 13) {
-                                    SearchForm.gemeinde = e.target.value
-                                    SearchForm.search()
+                                    searchParams.gdenr = e.target.value;
+                                    search()
                                 }
                             },
-                            value: SearchForm.gemeinde,
+                            value: searchParams.gdenr,
                             maxlength: 4
                         }),
                     ]),
@@ -98,28 +80,26 @@ const SearchForm = {
                         m("label", "Gemeindename"),
                         m("input", {
                             onfocusout: (e) => {
-                                SearchForm.gemeindename = e.target.value
-                                //SearchForm.search()
+                                searchParams.gdenamk = e.target.value;
                             },
                             oninput: (e) => {
-                                SearchForm.gemeindename = e.target.value
+                                searchParams.gdenamk = e.target.value;
                             },
                             onkeyup: (e) => {
                                 if (e.keyCode === 13) {
-                                    SearchForm.gemeindename = e.target.value
-                                    SearchForm.search()
+                                    searchParams.gdenamk = e.target.value;
+                                    search()
                                 }
                             },
-                            value: SearchForm.gemeindename
+                            value: searchParams.gdenamk
                         }),
                     ]),
                     m(".pure-controls", [
                         m("label.pure-checkbox",
                             m("input[type=checkbox]", {
-                                checked: SearchForm.checkboxvalue ? "checked" : "",
+                                checked: searchParams.only100 > 0 ? "checked" : "",
                                 onclick: (e) => {
-                                    SearchForm.checkboxvalue = e.target.checked
-                                    SearchForm.search()
+                                    searchParams.only100 = e.target.checked ? 1 : 0;
                                 },
                             }),
                             t("nur 100% Übereinstimmung")
@@ -127,39 +107,21 @@ const SearchForm = {
                     ]),
                     m(".pure-controls", [
                         m("button.pure-button", {
-                            onclick: (e) => {
-                                SearchForm.search()
+                            onclick: () => {
+                                search();
                             }
                         }, t("Suchen")),
-                        !searching ? "" : m("button.pure-button", {
-                            onclick: (e) => {
-                                SearchForm.reset()
+                        !wasSearched ? "" : m("button.pure-button", {
+                            onclick: () => {
+                                reset();
+                                document.getElementById("plz").focus();
                             }
                         }, t("Zurücksetzen")),
                     ])
                 ])
             ])
         ];
-    },
-    reset() {
-        SearchForm.plz = ""
-        SearchForm.kanton = ""
-        SearchForm.gemeinde = ""
-        SearchForm.gemeindename = ""
-        SearchForm.checkboxvalue = false
-        SearchForm.resetHandler.call()
-        document.getElementById("plz").focus()
-    },
-    search() {
-        SearchForm.searchHandler.call(
-            SearchForm,
-            SearchForm.plz,
-            SearchForm.kanton,
-            SearchForm.gemeinde,
-            SearchForm.gemeindename,
-            SearchForm.checkboxvalue
-        )
     }
-}
+};
 
 export {SearchForm};
