@@ -21,6 +21,7 @@
         .pure-table--entries td:nth-child(3) { width: 1%; text-align: center; }
         .pure-table--entries td:nth-child(4) { width: 1%; text-align: right; padding-right: 10%; }
         .pure-table--entries td:nth-child(5) { white-space: nowrap; }
+        .pure-table--entries th:hover { cursor:pointer; }
     </style>
 </head>
 <body>

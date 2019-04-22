@@ -16,15 +16,16 @@ const SearchForm = {
     resetHandler: null,
     searchHandler: null,
     oninit(vnode) {
-        this.plz = ""
-        this.kanton = ""
-        this.gemeinde = ""
-        this.gemeindename = ""
-        this.checkboxvalue = false
-        this.resetHandler = vnode.attrs.resetHandler
-        this.searchHandler = vnode.attrs.searchHandler
+        SearchForm.plz = ""
+        SearchForm.kanton = ""
+        SearchForm.gemeinde = ""
+        SearchForm.gemeindename = ""
+        SearchForm.checkboxvalue = false
+        SearchForm.resetHandler = vnode.attrs.resetHandler
+        SearchForm.searchHandler = vnode.attrs.searchHandler
     },
     view(vnode) {
+        let {searching} = vnode.attrs;
         return [
             m("form.pure-form.pure-form-aligned", [
                 m("fieldset", [
@@ -32,20 +33,20 @@ const SearchForm = {
                         m("label[for=plz]", "Postleitzahl"),
                         m("input#plz", {
                             onfocusout: (e) => {
-                                this.plz = e.target.value
-                                this.search()
+                                SearchForm.plz = e.target.value
+                                //SearchForm.search()
                             },
                             oninput: (e) => {
-                                this.plz = e.target.value = e.target.value.replace(/[^0-9]/, "")
+                                SearchForm.plz = e.target.value = e.target.value.replace(/[^0-9]/, "")
                             },
                             onkeyup: (e) => {
                                 if (e.keyCode === 13) {
-                                    this.plz = e.target.value
-                                    this.search()
+                                    SearchForm.plz = e.target.value
+                                    SearchForm.search()
                                 }
                             },
                             type: "text",
-                            value: this.plz,
+                            value: SearchForm.plz,
                             maxlength: 4,
                             autofocus: "autofocus"
                         })
@@ -54,13 +55,19 @@ const SearchForm = {
                         m("label", "Kanton"),
                         m("select", {
                             oninput: (e) => {
-                                this.kanton = e.target.value
+                                SearchForm.kanton = e.target.value
                             },
                             onchange: (e) => {
-                                this.kanton = e.target.value
-                                this.search()
+                                SearchForm.kanton = e.target.value
+                                //SearchForm.search()
                             },
-                            value: this.kanton
+                            onkeyup: (e) => {
+                                if (e.keyCode === 13) {
+                                    //SearchForm.kanton = e.target.value
+                                    SearchForm.search()
+                                }
+                            },
+                            value: SearchForm.kanton
                         }, [
                             kantone.map((kanton) => {
                                 return m('option', kanton)
@@ -71,19 +78,19 @@ const SearchForm = {
                         m("label", "Gemeindenummer"),
                         m("input", {
                             onfocusout: (e) => {
-                                this.gemeinde = e.target.value
-                                this.search()
+                                SearchForm.gemeinde = e.target.value
+                                //SearchForm.search()
                             },
                             oninput: (e) => {
-                                this.gemeinde = e.target.value = e.target.value.replace(/[^0-9]/, "")
+                                SearchForm.gemeinde = e.target.value = e.target.value.replace(/[^0-9]/, "")
                             },
                             onkeyup: (e) => {
                                 if (e.keyCode === 13) {
-                                    this.gemeinde = e.target.value
-                                    this.search()
+                                    SearchForm.gemeinde = e.target.value
+                                    SearchForm.search()
                                 }
                             },
-                            value: this.gemeinde,
+                            value: SearchForm.gemeinde,
                             maxlength: 4
                         }),
                     ]),
@@ -91,28 +98,28 @@ const SearchForm = {
                         m("label", "Gemeindename"),
                         m("input", {
                             onfocusout: (e) => {
-                                this.gemeindename = e.target.value
-                                this.search()
+                                SearchForm.gemeindename = e.target.value
+                                //SearchForm.search()
                             },
                             oninput: (e) => {
-                                this.gemeindename = e.target.value
+                                SearchForm.gemeindename = e.target.value
                             },
                             onkeyup: (e) => {
                                 if (e.keyCode === 13) {
-                                    this.gemeindename = e.target.value
-                                    this.search()
+                                    SearchForm.gemeindename = e.target.value
+                                    SearchForm.search()
                                 }
                             },
-                            value: this.gemeindename
+                            value: SearchForm.gemeindename
                         }),
                     ]),
                     m(".pure-controls", [
                         m("label.pure-checkbox",
                             m("input[type=checkbox]", {
-                                checked: this.checkboxvalue ? "checked" : "",
+                                checked: SearchForm.checkboxvalue ? "checked" : "",
                                 onclick: (e) => {
-                                    this.checkboxvalue = e.target.checked
-                                    this.search()
+                                    SearchForm.checkboxvalue = e.target.checked
+                                    SearchForm.search()
                                 },
                             }),
                             t("nur 100% Übereinstimmung")
@@ -121,12 +128,12 @@ const SearchForm = {
                     m(".pure-controls", [
                         m("button.pure-button", {
                             onclick: (e) => {
-                                this.search()
+                                SearchForm.search()
                             }
                         }, t("Suchen")),
-                        this.isEmpty() ? "" : m("button.pure-button", {
+                        !searching ? "" : m("button.pure-button", {
                             onclick: (e) => {
-                                this.reset()
+                                SearchForm.reset()
                             }
                         }, t("Zurücksetzen")),
                     ])
@@ -135,28 +142,22 @@ const SearchForm = {
         ];
     },
     reset() {
-        this.plz = ""
-        this.kanton = ""
-        this.gemeinde = ""
-        this.gemeindename = ""
-        this.checkboxvalue = false
-        this.resetHandler.call()
+        SearchForm.plz = ""
+        SearchForm.kanton = ""
+        SearchForm.gemeinde = ""
+        SearchForm.gemeindename = ""
+        SearchForm.checkboxvalue = false
+        SearchForm.resetHandler.call()
     },
     search() {
-        this.searchHandler.call(
-            this,
-            this.plz,
-            this.kanton,
-            this.gemeinde,
-            this.gemeindename,
-            this.checkboxvalue
+        SearchForm.searchHandler.call(
+            SearchForm,
+            SearchForm.plz,
+            SearchForm.kanton,
+            SearchForm.gemeinde,
+            SearchForm.gemeindename,
+            SearchForm.checkboxvalue
         )
-    },
-    isEmpty() {
-        return this.plz === ""
-            && this.kanton === ""
-            && this.gemeinde === ""
-            && this.gemeindename === ""
     }
 }
 
