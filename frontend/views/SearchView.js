@@ -3,11 +3,13 @@ import {SearchForm} from "../components/SearchForm";
 import {SearchList} from "../components/SearchList";
 import {SearchTotal} from "../components/SearchTotal";
 import {SearchModel} from "../models/SearchModel";
+import {t} from "../components/Translate";
 
 let searching = false;
 
 const SearchView = {
     view() {
+        document.title = t("Gemeindeverzeichnis der Schweiz");
         return [
             m("h2", "Gemeindeverzeichnis der Schweiz"),
             m(SearchForm, {
