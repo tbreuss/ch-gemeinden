@@ -2,6 +2,16 @@ import m from "mithril";
 import {t} from "./Translate";
 import {SearchModel} from "../models/SearchModel";
 
+function entryView(entry) {
+    return m("tr", [
+        m("td", entry.plz4),
+        m("td", entry.in_gde + " %"),
+        m("td", entry.ktkz),
+        m("td", entry.gdenr),
+        m("td", entry.gdenamk)
+    ]);
+}
+
 const SearchList = {
     view(vnode) {
         let {entries} = vnode.attrs;
@@ -18,15 +28,7 @@ const SearchList = {
                     m("th[data-sort=gdenamk]", {onclick: SearchList.sort}, t("Gemeindename"))
                 ])
             ]),
-            m("tbody", entries.map((entry) => {
-                return m("tr", [
-                    m("td", entry.plz4),
-                    m("td", entry.in_gde + " %"),
-                    m("td", entry.ktkz),
-                    m("td", entry.gdenr),
-                    m("td", entry.gdenamk)
-                ]);
-            }))
+            m("tbody", entries.map(entryView))
         ]);
     },
     sort(e) {
