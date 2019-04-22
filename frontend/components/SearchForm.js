@@ -148,6 +148,7 @@ const SearchForm = {
         SearchForm.gemeindename = ""
         SearchForm.checkboxvalue = false
         SearchForm.resetHandler.call()
+        document.getElementById("plz").focus()
     },
     search() {
         SearchForm.searchHandler.call(
