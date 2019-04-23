@@ -9,8 +9,7 @@ Demo: <https://ch-gemeinden.tebe.ch>
 
 ## To be done:
 
-- show number of search results
-- add sort for each column
-- add pagination
-
-
+- [x] show number of search results
+- [x] add sort for each column
+- [ ] add pagination
+- [ ] use [html boilerplate](https://github.com/tbreuss/html-boilerplate)
