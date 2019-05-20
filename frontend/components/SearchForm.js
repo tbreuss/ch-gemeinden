@@ -107,7 +107,8 @@ const SearchForm = {
                     ]),
                     m(".pure-controls", [
                         m("button.pure-button", {
-                            onclick: () => {
+                            onclick: (e) => {
+                                e.preventDefault();
                                 search();
                             }
                         }, t("Suchen")),
