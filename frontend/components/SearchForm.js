@@ -23,12 +23,6 @@ const SearchForm = {
                                 e.target.value = e.target.value.replace(/[^0-9]/, "");
                                 searchParams.plz4 = e.target.value;
                             },
-                            onkeyup: (e) => {
-                                if (e.keyCode === 13) {
-                                    searchParams.plz4 = e.target.value;
-                                    search();
-                                }
-                            },
                             type: "text",
                             value: searchParams.plz4,
                             maxlength: 4,
@@ -43,11 +37,6 @@ const SearchForm = {
                             },
                             onchange: (e) => {
                                 searchParams.ktkz = e.target.value;
-                            },
-                            onkeyup: (e) => {
-                                if (e.keyCode === 13) {
-                                    search();
-                                }
                             },
                             value: searchParams.ktkz
                         }, [
@@ -66,12 +55,6 @@ const SearchForm = {
                                 e.target.value = e.target.value.replace(/[^0-9]/, "");
                                 searchParams.gdenr = e.target.value;
                             },
-                            onkeyup: (e) => {
-                                if (e.keyCode === 13) {
-                                    searchParams.gdenr = e.target.value;
-                                    search()
-                                }
-                            },
                             value: searchParams.gdenr,
                             maxlength: 4
                         }),
@@ -84,12 +67,6 @@ const SearchForm = {
                             },
                             oninput: (e) => {
                                 searchParams.gdenamk = e.target.value;
-                            },
-                            onkeyup: (e) => {
-                                if (e.keyCode === 13) {
-                                    searchParams.gdenamk = e.target.value;
-                                    search()
-                                }
                             },
                             value: searchParams.gdenamk
                         }),
@@ -110,13 +87,16 @@ const SearchForm = {
                             onclick: (e) => {
                                 e.preventDefault();
                                 search();
-                            }
+                            },
+                            type: "button"
                         }, t("Suchen")),
                         !wasSearched ? "" : m("button.pure-button", {
-                            onclick: () => {
+                            onclick: (e) => {
+                                e.preventDefault();
                                 reset();
                                 document.getElementById("plz").focus();
-                            }
+                            },
+                            type: "button"
                         }, t("Zurücksetzen")),
                     ])
                 ])
