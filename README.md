@@ -12,4 +12,4 @@ Demo: <https://ch-gemeinden.tebe.ch>
 - [x] show number of search results
 - [x] add sort for each column
 - [ ] add pagination
-- [ ] use [html boilerplate](https://github.com/tbreuss/html-boilerplate)
+- [x] use [html boilerplate](https://github.com/tbreuss/html-boilerplate)
