@@ -22,7 +22,7 @@ const SearchModel = {
         return m.request({
             method: "GET",
             url: WEB_URL + "search",
-            data: SearchModel.params
+            params: SearchModel.params
         }).then((result) => {
             list = result;
             wasSearched = true;

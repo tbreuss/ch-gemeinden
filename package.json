@@ -11,13 +11,12 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "bugs": {
-    },
+    "bugs": {},
     "dependencies": {
-        "mithril": "^1.1.6"
+        "mithril": "^2.0.0-rc.5"
     },
     "devDependencies": {
-        "webpack": "^4.17.1",
-        "webpack-cli": "^3.1.0"
+        "webpack": "^4.32.2",
+        "webpack-cli": "^3.3.2"
     }
 }
