@@ -1,5 +1,6 @@
+<?php use yii\helpers\Url; ?>
 <script>
-    const WEB_URL = '<?= Yii::$app->request->baseUrl ?>';
+    const WEB_URL = '<?= Url::home() ?>';
 </script>
 <?php if (YII_DEBUG): ?>
     <script src="./static/app-dev.js"></script>
