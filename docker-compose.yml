@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  web:
+    build: .
+    volumes:
+      - ./:/var/www/localhost
+      - ./web/:/var/www/localhost/htdocs
+    ports:
+      - 8881:80
+    labels:
+      - "traefik.frontend.rule=Host:api.ch-gemeinde.localhost"
