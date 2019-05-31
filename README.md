@@ -52,3 +52,5 @@ Start project:
 ~~~bash
 docker-compose up
 ~~~ 
+
+Open <http://localhost:8881> in your favorite browser.
