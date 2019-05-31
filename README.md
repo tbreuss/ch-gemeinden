@@ -38,11 +38,17 @@ return [
 ];
 ~~~
 
-Install PHP dependecies:
+Install PHP dependencies:
 
 ~~~bash
 docker run -it --rm -v `pwd`:/app composer install --ignore-platform-reqs
 ~~~
+
+Install Node dependencies:
+
+~~~bash
+docker run -it --rm -v $(pwd):/app -w /app node npm install
+~~~ 
 
 
 ## Run
