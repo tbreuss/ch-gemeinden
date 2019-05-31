@@ -41,7 +41,7 @@ return [
 Install PHP dependecies:
 
 ~~~bash
-docker run -it --rm -v `pwd`:/app composer --ignore-platform-reqs install
+docker run -it --rm -v `pwd`:/app composer install --ignore-platform-reqs
 ~~~
 
 
