@@ -2,6 +2,13 @@ version: '3'
 
 services:
 
+  npm:
+    image: node:12-alpine
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: npm run start
+
   web:
     build: .
     volumes:
@@ -9,5 +16,3 @@ services:
       - ./web/:/var/www/localhost/htdocs
     ports:
       - 8881:80
-    labels:
-      - "traefik.frontend.rule=Host:api.ch-gemeinde.localhost"

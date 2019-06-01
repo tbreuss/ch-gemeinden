@@ -22,20 +22,7 @@ Demo: <https://ch-gemeinden.tebe.ch>
 Clone repo:
 
 ~~~bash
-https://github.com/tbreuss/ch-gemeinden.git
-~~~
-
-Create config file `config/db.php` and add settings:
-
-~~~php
-<?php
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=DB_HOST;dbname=DB_NAME',
-    'username' => 'DB_USERNAME',
-    'password' => 'DB_PASSWORD',
-    'charset' => 'utf8'
-];
+git clone https://github.com/tbreuss/ch-gemeinden.git
 ~~~
 
 Install PHP dependencies:
