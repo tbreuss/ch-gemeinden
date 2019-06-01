@@ -1,31 +1,3 @@
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
-# Export von Tabelle plz_gemeinde
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `plz_gemeinde`;
-
-CREATE TABLE `plz_gemeinde` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `plz4` int(4) DEFAULT NULL,
-  `in_gde` float(5,2) DEFAULT NULL,
-  `ktkz` char(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gdenr` int(4) DEFAULT NULL,
-  `gdenamk` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `plz_gemeinde` WRITE;
-/*!40000 ALTER TABLE `plz_gemeinde` DISABLE KEYS */;
-
 INSERT INTO `plz_gemeinde` (`id`, `plz4`, `in_gde`, `ktkz`, `gdenr`, `gdenamk`)
 VALUES
 	(1,1000,100.00,'VD',5586,'Lausanne'),
@@ -181,7 +153,7 @@ VALUES
 	(151,1148,0.10,'VD',5474,'La Chaux (Cossonay)'),
 	(152,1148,5.70,'VD',5475,'Chavannes-le-Veyron'),
 	(153,1148,17.60,'VD',5479,'Cuarnens'),
-	(154,1148,37.30,'VD',5486,'L\'Isle'),
+	(154,1148,37.30,'VD',5486,'L''Isle'),
 	(155,1148,2.50,'VD',5488,'Mauraz'),
 	(156,1148,13.10,'VD',5490,'Moiry'),
 	(157,1148,17.00,'VD',5491,'Mont-la-Ville'),
@@ -430,18 +402,18 @@ VALUES
 	(400,1337,100.00,'VD',5764,'Vallorbe'),
 	(401,1338,100.00,'VD',5744,'Ballaigues'),
 	(402,1341,100.00,'VD',5872,'Le Chenit'),
-	(403,1342,100.00,'VD',5871,'L\'Abbaye'),
+	(403,1342,100.00,'VD',5871,'L''Abbaye'),
 	(404,1343,100.00,'VD',5873,'Le Lieu'),
-	(405,1344,100.00,'VD',5871,'L\'Abbaye'),
+	(405,1344,100.00,'VD',5871,'L''Abbaye'),
 	(406,1345,100.00,'VD',5873,'Le Lieu'),
-	(407,1346,100.00,'VD',5871,'L\'Abbaye'),
+	(407,1346,100.00,'VD',5871,'L''Abbaye'),
 	(408,1347,100.00,'VD',5872,'Le Chenit'),
 	(409,1348,100.00,'VD',5872,'Le Chenit'),
 	(410,1350,100.00,'VD',5757,'Orbe'),
 	(411,1352,100.00,'VD',5742,'Agiez'),
 	(412,1353,100.00,'VD',5747,'Bofflens'),
 	(413,1354,100.00,'VD',5756,'Montcherand'),
-	(414,1355,63.10,'VD',5741,'L\'Abergement'),
+	(414,1355,63.10,'VD',5741,'L''Abergement'),
 	(415,1355,36.90,'VD',5762,'Sergey'),
 	(416,1356,100.00,'VD',5750,'Les Clées'),
 	(417,1357,100.00,'VD',5755,'Lignerolle'),
@@ -662,9 +634,9 @@ VALUES
 	(632,1657,1.80,'BE',791,'Boltigen'),
 	(633,1657,98.20,'BE',843,'Saanen'),
 	(634,1658,100.00,'VD',5842,'Rossinière'),
-	(635,1659,5.20,'VD',5841,'Château-d\'Oex'),
+	(635,1659,5.20,'VD',5841,'Château-d''Oex'),
 	(636,1659,94.80,'VD',5843,'Rougemont'),
-	(637,1660,100.00,'VD',5841,'Château-d\'Oex'),
+	(637,1660,100.00,'VD',5841,'Château-d''Oex'),
 	(638,1661,0.30,'FR',2135,'Gruyères'),
 	(639,1661,99.70,'FR',2145,'Le Pâquier (FR)'),
 	(640,1663,100.00,'FR',2135,'Gruyères'),
@@ -868,7 +840,7 @@ VALUES
 	(838,1871,1.30,'VS',6215,'Massongex'),
 	(839,1872,0.70,'VS',6152,'Collombey-Muraz'),
 	(840,1872,99.30,'VS',6156,'Troistorrents'),
-	(841,1873,100.00,'VS',6157,'Val-d\'Illiez'),
+	(841,1873,100.00,'VS',6157,'Val-d''Illiez'),
 	(842,1874,100.00,'VS',6151,'Champéry'),
 	(843,1875,100.00,'VS',6156,'Troistorrents'),
 	(844,1880,99.50,'VD',5402,'Bex'),
@@ -3245,7 +3217,7 @@ VALUES
 	(3215,6514,0.10,'TI',5008,'Gudo'),
 	(3216,6514,99.90,'TI',5019,'Sementina'),
 	(3217,6515,98.60,'TI',5008,'Gudo'),
-	(3218,6515,0.50,'TI',5017,'Sant\'Antonino'),
+	(3218,6515,0.50,'TI',5017,'Sant''Antonino'),
 	(3219,6515,0.80,'TI',5019,'Sementina'),
 	(3220,6516,18.10,'TI',5113,'Locarno'),
 	(3221,6516,81.90,'TI',5138,'Cugnasco-Gerra'),
@@ -3258,7 +3230,7 @@ VALUES
 	(3228,6526,100.00,'TI',5285,'Lodrino'),
 	(3229,6527,100.00,'TI',5285,'Lodrino'),
 	(3230,6528,99.90,'TI',5004,'Camorino'),
-	(3231,6528,0.10,'TI',5017,'Sant\'Antonino'),
+	(3231,6528,0.10,'TI',5017,'Sant''Antonino'),
 	(3232,6532,92.40,'TI',5001,'Arbedo-Castione'),
 	(3233,6532,7.30,'TI',5010,'Lumino'),
 	(3234,6532,0.30,'TI',5282,'Claro'),
@@ -3297,15 +3269,15 @@ VALUES
 	(3267,6578,100.00,'TI',5398,'Gambarogno'),
 	(3268,6579,100.00,'TI',5398,'Gambarogno'),
 	(3269,6582,100.00,'TI',5014,'Pianezzo'),
-	(3270,6583,100.00,'TI',5018,'Sant\'Antonio'),
-	(3271,6584,100.00,'TI',5018,'Sant\'Antonio'),
+	(3270,6583,100.00,'TI',5018,'Sant''Antonio'),
+	(3271,6584,100.00,'TI',5018,'Sant''Antonio'),
 	(3272,6592,0.10,'TI',5003,'Cadenazzo'),
 	(3273,6592,2.40,'TI',5005,'Giubiasco'),
 	(3274,6592,0.10,'TI',5008,'Gudo'),
-	(3275,6592,97.20,'TI',5017,'Sant\'Antonino'),
+	(3275,6592,97.20,'TI',5017,'Sant''Antonino'),
 	(3276,6592,0.10,'TI',5019,'Sementina'),
 	(3277,6593,97.50,'TI',5003,'Cadenazzo'),
-	(3278,6593,1.70,'TI',5017,'Sant\'Antonino'),
+	(3278,6593,1.70,'TI',5017,'Sant''Antonino'),
 	(3279,6593,0.80,'TI',5398,'Gambarogno'),
 	(3280,6594,2.60,'TI',5113,'Locarno'),
 	(3281,6594,1.00,'TI',5138,'Cugnasco-Gerra'),
@@ -3494,19 +3466,19 @@ VALUES
 	(3464,6915,100.00,'TI',5192,'Lugano'),
 	(3465,6916,95.70,'TI',5186,'Grancia'),
 	(3466,6916,3.70,'TI',5192,'Lugano'),
-	(3467,6916,0.60,'TI',5236,'Collina d\'Oro'),
+	(3467,6916,0.60,'TI',5236,'Collina d''Oro'),
 	(3468,6917,100.00,'TI',5192,'Lugano'),
 	(3469,6918,97.80,'TI',5192,'Lugano'),
 	(3470,6918,2.20,'TI',5203,'Morcote'),
-	(3471,6919,100.00,'TI',5236,'Collina d\'Oro'),
+	(3471,6919,100.00,'TI',5236,'Collina d''Oro'),
 	(3472,6921,100.00,'TI',5233,'Vico Morcote'),
 	(3473,6922,100.00,'TI',5203,'Morcote'),
 	(3474,6924,3.30,'TI',5192,'Lugano'),
 	(3475,6924,96.70,'TI',5225,'Sorengo'),
 	(3476,6925,0.20,'TI',5192,'Lugano'),
-	(3477,6925,99.80,'TI',5236,'Collina d\'Oro'),
-	(3478,6926,100.00,'TI',5236,'Collina d\'Oro'),
-	(3479,6927,100.00,'TI',5236,'Collina d\'Oro'),
+	(3477,6925,99.80,'TI',5236,'Collina d''Oro'),
+	(3478,6926,100.00,'TI',5236,'Collina d''Oro'),
+	(3479,6927,100.00,'TI',5236,'Collina d''Oro'),
 	(3480,6928,100.00,'TI',5194,'Manno'),
 	(3481,6929,100.00,'TI',5187,'Gravesano'),
 	(3482,6930,100.00,'TI',5148,'Bedano'),
@@ -4952,15 +4924,3 @@ VALUES
 	(4922,9658,0.20,'SG',3272,'Gams'),
 	(4923,9658,0.20,'SG',3273,'Grabs'),
 	(4924,9658,99.70,'SG',3359,'Wildhaus-Alt St. Johann');
-
-/*!40000 ALTER TABLE `plz_gemeinde` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
