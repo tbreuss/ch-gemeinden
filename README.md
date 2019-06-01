@@ -1,20 +1,8 @@
 # Swiss Municipality Index
 
-Simple demo app using Yii2 as backend and Mithril.js as frontend.
+Simple demo app using Yii2 as backend, Mithril.js as frontend, and SQLite as database engine.
 
 Demo: <https://ch-gemeinden.tebe.ch>
-
-
-## To be done:
-
-**Work in progress**
-
-- [x] show number of search results
-- [x] add sort for each column
-- [x] use [html boilerplate](https://github.com/tbreuss/html-boilerplate)
-- [x] dockerize app
-- [ ] add pagination
-- [ ] add sort icons
 
 
 ## Install
@@ -34,7 +22,7 @@ docker run -it --rm -v `pwd`:/app composer install --ignore-platform-reqs
 Install Node dependencies:
 
 ~~~bash
-docker run -it --rm -v $(pwd):/app -w /app node npm install
+docker run -it --rm -v $(pwd):/app -w /app node:alpine npm install
 ~~~ 
 
 
@@ -47,3 +35,16 @@ docker-compose up
 ~~~ 
 
 Open <http://localhost:8881> in your favorite browser.
+
+
+## To be done:
+
+**Work in progress**
+
+- [x] show number of search results
+- [x] add sort for each column
+- [x] use [html boilerplate](https://github.com/tbreuss/html-boilerplate)
+- [x] dockerize app
+- [x] use sqlite
+- [ ] add pagination
+- [ ] add sort icons
