@@ -28,13 +28,30 @@ docker run -it --rm -v $(pwd):/app -w /app node:alpine npm install
 
 ## Run
 
-Start project:
+Start project in production mode:
 
 ~~~bash
 docker-compose up
 ~~~ 
 
-Open <http://localhost:8881> in your favorite browser.
+Open <http://localhost:8881> in your browser.
+
+
+## Dev
+
+Start project in development mode:
+
+~~~bash
+docker-compose -f development.yml up
+~~~ 
+
+Open <http://localhost:8881> in your browser.
+
+Build app.js for production:
+
+~~~bash
+docker run -it --rm -v $(pwd):/app -w /app node:alpine npm run build
+~~~ 
 
 
 ## To be done:
@@ -48,3 +65,4 @@ Open <http://localhost:8881> in your favorite browser.
 - [x] use sqlite
 - [ ] add pagination
 - [ ] add sort icons
+- [ ] enable x-debug in development
