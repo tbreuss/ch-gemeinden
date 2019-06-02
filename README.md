@@ -19,14 +19,8 @@ Install PHP dependencies:
 docker run -it --rm -v `pwd`:/app composer install --ignore-platform-reqs
 ~~~
 
-Install Node dependencies:
 
-~~~bash
-docker run -it --rm -v $(pwd):/app -w /app node:alpine npm install
-~~~ 
-
-
-## Run
+## Production
 
 Start project in production mode:
 
@@ -37,7 +31,15 @@ docker-compose up
 Open <http://localhost:8881> in your browser.
 
 
-## Dev
+## Development
+
+Clone repo and install PHP dependencies as described above.
+
+Install Node dependencies:
+
+~~~bash
+docker run -it --rm -v $(pwd):/app -w /app node:alpine npm install
+~~~ 
 
 Start project in development mode:
 
