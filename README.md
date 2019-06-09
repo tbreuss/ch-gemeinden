@@ -16,7 +16,7 @@ Online demo: [https://ch-gemeinden.tebe.ch](https://ch-gemeinden.tebe.ch)
 docker run --rm -p 80:80 tbreuss/ch-gemeinden
 ~~~
 
-Open [http://localhost:8881](http://localhost:8881) in your browser.
+Open [http://localhost](http://localhost) in your browser.
 
 
 ## Development
@@ -34,7 +34,7 @@ cd ch-gemeinden
 docker-compose up -d
 ~~~ 
 
-Open <http://localhost:8881> in your browser.
+Open [http://localhost:8881](http://localhost:8881) in your browser.
 
 Build app.js for production:
 
