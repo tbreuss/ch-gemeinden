@@ -2,49 +2,36 @@
 
 Simple demo app using Yii2 as backend, Mithril.js as frontend, and SQLite as database engine.
 
-Demo: <https://ch-gemeinden.tebe.ch>
+Online demo: [https://ch-gemeinden.tebe.ch](https://ch-gemeinden.tebe.ch)
 
 
-## Install
+## Prerequisites
 
-Clone repo:
-
-~~~bash
-git clone https://github.com/tbreuss/ch-gemeinden.git
-~~~
-
-Install PHP dependencies:
-
-~~~bash
-docker run -it --rm -v `pwd`:/app composer install --ignore-platform-reqs
-~~~
+- Docker & Docker Compose
 
 
 ## Production
 
-Start project in production mode:
-
 ~~~bash
-docker-compose up
-~~~ 
+docker run --rm -p 80:80 tbreuss/ch-gemeinden
+~~~
 
-Open <http://localhost:8881> in your browser.
+Open [http://localhost:8881](http://localhost:8881) in your browser.
 
 
 ## Development
 
-Clone repo and install PHP dependencies as described above.
-
-Install Node dependencies:
+Clone repo from GitHub:
 
 ~~~bash
-docker run -it --rm -v $(pwd):/app -w /app node:alpine npm install
+git clone https://github.com/tbreuss/ch-gemeinden.git
 ~~~ 
 
 Start project in development mode:
 
 ~~~bash
-docker-compose -f development.yml up
+cd ch-gemeinden
+docker-compose up -d
 ~~~ 
 
 Open <http://localhost:8881> in your browser.

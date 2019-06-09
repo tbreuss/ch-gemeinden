@@ -2,11 +2,27 @@ version: '3'
 
 services:
 
-  web:
-    build: .
+  composer:
+    restart: 'no'
+    image: composer/composer:php7
+    command: install
+    volumes:
+      - .:/app
+
+  frontend:
+    image: node:12-alpine
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: npm run start
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     environment:
-      - YII_DEBUG=0
-      - YII_ENV=prod
+      - YII_DEBUG=1
+      - YII_ENV=dev
     volumes:
       - ./:/var/www/localhost
       - ./web/:/var/www/localhost/htdocs
