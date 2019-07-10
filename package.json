@@ -13,10 +13,10 @@
     "license": "ISC",
     "bugs": {},
     "dependencies": {
-        "mithril": "^2.0.0-rc.5"
+        "mithril": "^2.0.0-rc.7"
     },
     "devDependencies": {
-        "webpack": "^4.32.2",
-        "webpack-cli": "^3.3.2"
+        "webpack": "^4.35.3",
+        "webpack-cli": "^3.3.5"
     }
 }
