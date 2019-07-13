@@ -1,6 +1,6 @@
 # Swiss Municipality Index
 
-Simple demo app using Yii2 as backend, Mithril.js as frontend, and SQLite as database engine.
+Simple demo app using Mithril.js as frontend, Yii2 as backend, and SQLite as database engine.
 
 Online demo: [https://ch-gemeinden.tebe.ch](https://ch-gemeinden.tebe.ch)
 
