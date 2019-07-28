@@ -15,7 +15,8 @@ class SearchController extends Controller
         string $gdenamk = '',
         int $only100 = 0,
         string $sort = ''
-    ): array {
+    ): array
+    {
         $query = (new Query())
             ->select('*')
             ->from('plz_gemeinde');
