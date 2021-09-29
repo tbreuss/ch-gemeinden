@@ -4,8 +4,8 @@ services:
 
   composer:
     restart: 'no'
-    image: composer/composer:php7
-    command: install
+    image: composer/composer:latest
+    command: install --ignore-platform-reqs
     volumes:
       - .:/app
 
