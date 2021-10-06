@@ -30,8 +30,8 @@ const DefaultLayout = {
                                             "Über dieses Projekt"
                                         ),
                                         m("p.footer-about__text",
-                                            "Dieses Projekt ist ein Beispiel für eine Mithril.js Single Page Application (SPA), \
-                                                die an eine REST-API angebunden ist, basierend auf dem Yii2 Framework."
+                                            "Dieses Projekt ist ein Beispiel für eine Mithril.js Single-Page Application (SPA), \
+                                                die an eine REST-API basierend auf dem Yii2 Framework angebunden ist."
                                         )
                                     ]
                                 ),

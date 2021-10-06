@@ -79,7 +79,7 @@ const SearchForm = {
                                     searchParams.only100 = e.target.checked ? 1 : 0;
                                 },
                             }),
-                            t("nur 100% Übereinstimmung")
+                            t("nur mit 100% Anteil in Gemeinde")
                         )
                     ]),
                     m(".pure-controls", [
