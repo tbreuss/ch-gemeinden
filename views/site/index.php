@@ -3,7 +3,7 @@
     const WEB_URL = '<?= Url::home() ?>';
 </script>
 <?php if (YII_DEBUG): ?>
-    <script src="./static/app-dev.js"></script>
+    <script src="./static/app-dev.js?t=<?= time() ?>"></script>
 <?php else: ?>
     <script src="./static/app.js"></script>
 <?php endif; ?>
