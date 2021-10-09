@@ -9,10 +9,25 @@ const kantone = [
 
 const SearchForm = {
     view(vnode) {
-        let {searchParams, search, reset, wasSearched} = vnode.attrs;
+        let {searchParams, search, reset, wasSearched, state, actions} = vnode.attrs;
         return [
             m("form.pure-form.pure-form-aligned", [
                 m("fieldset", [
+                    m(".pure-controls", [
+                        m("button.pure-button", {
+                            onclick: (e) => {
+                                e.preventDefault();
+                                actions.increment();
+                            }
+                        }, t("Increment")),
+                        m("button.pure-button", {
+                            onclick: (e) => {
+                                e.preventDefault();
+                                actions.decrement();
+                            }
+                        }, t("Decrement"))                      
+                      ]
+                    ),
                     m(".pure-control-group", [
                         m("label[for=plz]", "Postleitzahl"),
                         m("input#plz", {

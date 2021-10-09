@@ -19,18 +19,20 @@ function reset() {
 }
 
 const SearchView = {
-    view() {
+    view({ attrs: { state, actions } }) {
         document.title = t("Gemeindeverzeichnis der Schweiz");
         return [
             m("h2", "Gemeindeverzeichnis der Schweiz"),
             m(SearchForm, {
                 searchParams: SearchModel.params,
                 wasSearched: SearchModel.wasSearched(),
-                search: search,
-                reset: reset
+                search,
+                reset,
+                state: state,
+                actions: actions
             }),
             m(SearchTotal, {count: SearchModel.getCount(), wasSearched: SearchModel.wasSearched()}),
-            m(SearchList, {entries: SearchModel.getList(), sort: sort})
+            m(SearchList, {entries: SearchModel.getList(), sort: sort, state: state })
         ]
     }
 };

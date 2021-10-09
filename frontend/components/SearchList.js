@@ -13,11 +13,13 @@ function entryView(entry) {
 
 const SearchList = {
     view(vnode) {
-        let {entries, sort} = vnode.attrs;
+        let {entries, sort, state} = vnode.attrs;
         if (entries.length === 0) {
             return [];
         }
-        return m("table.pure-table.pure-table-horizontal.pure-table--entries", [
+        return [
+          m('h2', state.count),
+          m("table.pure-table.pure-table-horizontal.pure-table--entries", [
             m("thead", [
                 m("tr", [
                     m("th[data-sort=plz4]", {
@@ -48,7 +50,7 @@ const SearchList = {
                 ])
             ]),
             m("tbody", entries.map(entryView))
-        ]);
+        ])];
     }
 };
 
